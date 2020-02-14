@@ -2,4 +2,4 @@
 2.	cd Flask
 3.	docker build -t <name_your_image> .
 4.	docker run -p 5000:5000 -d <name_your_image>
-5.	go to http://0.0.0.0:5000/
+5.	http://localhost:5000/
