@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  db:
+    restart: always
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+    ports:
+      - "5432:5432"
+  flaskapp:
+    restart: always
+    build: .
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db

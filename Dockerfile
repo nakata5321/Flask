@@ -1,5 +1,11 @@
 FROM python:latest
-COPY requirements.txt .
-COPY flaskproject/Hello.py .
+RUN apt-get update
+RUN mkdir flaskApp
+WORKDIR /flaskApp
+COPY requirements.txt /flaskApp/requirements.txt
+COPY flaskproject/Hello.py /flaskApp/Hello.py
 RUN pip install -r requirements.txt
-CMD export FLASK_APP=Hello.py && flask run --host=0.0.0.0 
+ENV FLASK_APP Hello.py
+ENV FLASK_RUN_HOST 0.0.0.0
+EXPOSE 5000
+CMD flask run
